@@ -16,7 +16,7 @@ export class Segment implements Common {
     return Analytics.with(app.android.context);
   }
 
-  public configure(key: string, configOptions?: SegmentConfig): void {
+  public static configure(key: string, configOptions?: SegmentConfig): void {
     // Create an analytics client with the given context and Segment write key.
     const analyticsBuilder = new Analytics.Builder(app.android.context, key);
 
@@ -53,15 +53,15 @@ export class Segment implements Common {
     Analytics.setSingletonInstance(analyticsBuilder.build());
   }
 
-  public identify(id: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions): void {
+  public static identify(id: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions): void {
     this.android.identify(id, _convertTraits(traits, customTraits), _convertOptions(options));
   }
 
-  public track(event: string, properties?: any, options?: SegmentOptions): void {
+  public static track(event: string, properties?: any, options?: SegmentOptions): void {
     this.android.track(event, _convertProperties(properties), _convertOptions(options));
   }
 
-  public screen(name: string, category?: string, properties?: any, options?: SegmentOptions): void {
+  public static screen(name: string, category?: string, properties?: any, options?: SegmentOptions): void {
     if (!category && !name) {
       _log(`Both "category" and "name" parameters of the screen method cannot be null`);
       return;
@@ -69,15 +69,15 @@ export class Segment implements Common {
     this.android.screen(category ? category : null, name ? name : null, _convertProperties(properties), _convertOptions(options));
   }
 
-  public group(groupId: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions) {
+  public static group(groupId: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions) {
     this.android.group(groupId, _convertTraits(traits, customTraits), _convertOptions(options));
   }
 
-  public alias(newId: string, options?: SegmentOptions): void {
+  public static alias(newId: string, options?: SegmentOptions): void {
     this.android.alias(newId, _convertOptions(options));
   }
 
-  public optOut(optOut: boolean) {
+  public static optOut(optOut: boolean) {
     this.android.optOut(optOut);
   }
 }

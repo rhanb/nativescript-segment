@@ -8,7 +8,7 @@ export class Segment implements Common {
         return SEGAnalytics.sharedAnalytics();
     }
 
-    public configure(key: string, configOptions?: SegmentConfig): void {
+    public static configure(key: string, configOptions?: SegmentConfig): void {
         let configuration: SEGAnalyticsConfiguration = SEGAnalyticsConfiguration.configurationWithWriteKey(key);
         if (configOptions !== undefined) {
             if (configOptions.trackLifeCycleEvents === undefined || configOptions.trackLifeCycleEvents) {
@@ -42,15 +42,15 @@ export class Segment implements Common {
         SEGAnalytics.setupWithConfiguration(configuration);
     }
 
-    public identify(id: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions): void {
+    public static identify(id: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions): void {
         this.ios.identifyTraitsOptions(id, _convertTraits(traits, customTraits), _convertOptions(options));
     }
 
-    public track(event: string, properties?: any, options?: SegmentOptions): void {
+    public static track(event: string, properties?: any, options?: SegmentOptions): void {
         this.ios.trackPropertiesOptions(event, _convertProperties(properties), _convertOptions(options));
     }
 
-    public screen(name: string, category?: string, properties?: any, options?: SegmentOptions): void {
+    public static screen(name: string, category?: string, properties?: any, options?: SegmentOptions): void {
         if (!category && !name) {
             _log(`Both "category" and "name" parameters of the screen method cannot be null`);
             return;
@@ -62,15 +62,15 @@ export class Segment implements Common {
         this.ios.screenPropertiesOptions(screenName, _convertProperties(properties), _convertOptions(options));
     }
 
-    public group(groupId: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions) {
+    public static group(groupId: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions) {
         this.ios.groupTraitsOptions(groupId, _convertTraits(traits, customTraits), _convertOptions(options));
     }
 
-    public alias(newId: string, options?: SegmentOptions): void {
+    public static alias(newId: string, options?: SegmentOptions): void {
         this.ios.aliasOptions(newId, _convertOptions(options));
     }
 
-    public optOut(optOut: boolean) {
+    public static optOut(optOut: boolean) {
         if (optOut) {
             this.ios.disable();
         } else {

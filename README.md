@@ -24,6 +24,7 @@ For access to the native SDK type definitions, specify the definitions in your *
 ## Usage
 
 ### Example
+All interaction with the library should be done via static function calls on the Segment import since both iOS and Android SDKs instantiate Segment as a singleton once the method configure has been successfully called.
 
 ```typescript
 const config: SegmentConfig = {
@@ -32,8 +33,6 @@ const config: SegmentConfig = {
 };
 Segment.configure(SEGMENT_KEY, config); // SEGMENT_KEY being your secret key
 ```
-
-All interaction with the library should be done via static function calls on the Segment import:
 
 ```typescript
 import { Segment } from 'nativescript-segment';
