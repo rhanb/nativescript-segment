@@ -1,10 +1,10 @@
 import { Common, SegmentConfig, SegmentTraits, SegmentOptions } from './segment.common';
 
-export class Segment implements Common {
+export class Segment extends Common {
     public static logging = false;
     public static debug = false;
 
-    get ios() {
+    static get ios() {
         return SEGAnalytics.sharedAnalytics();
     }
 

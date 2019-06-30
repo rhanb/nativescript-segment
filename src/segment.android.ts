@@ -6,13 +6,13 @@ const Traits = com.segment.analytics.Traits;
 const Properties = com.segment.analytics.Properties;
 const Options = com.segment.analytics.Options;
 
-export class Segment implements Common {
+export class Segment extends Common {
 
   public static init = false;
   public static logging = false;
   public static debug = false;
 
-  get android() {
+  static get android() {
     return Analytics.with(app.android.context);
   }
 
