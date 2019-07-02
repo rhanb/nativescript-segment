@@ -1,6 +1,6 @@
-import { Common, SegmentConfig, SegmentTraits, SegmentOptions } from './segment.common';
+import { SegmentConfig, SegmentTraits, SegmentOptions } from './segment.common';
 
-export class Segment extends Common {
+export class Segment {
     public static logging = false;
     public static debug = false;
 

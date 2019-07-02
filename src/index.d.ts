@@ -1,32 +1,32 @@
 
-import { Common, SegmentConfig, SegmentTraits, SegmentOptions } from './segment.common';
+import { SegmentAddress, SegmentConfig, SegmentTraits, SegmentOptions } from './segment.common';
 
 export { SegmentAddress, SegmentConfig, SegmentTraits, SegmentOptions } from './segment.common';
 
-export declare class Segment implements Common {
+export declare class Segment {
   /**
    * Sets logging within this plugin, and sets 'INFO' logging on the Segment SDK for Android only
    */
-  logging: boolean;
+  static logging: boolean;
 
   /**
    * Sets debug logging to the iOS Segment SDK, and for Android it sets the logging level to 'DEBUG' for the SDK
    */
-  debug: boolean;
+  static debug: boolean;
 
   /**
    * Provides the instance of the iOS SDK's SEGAnalytics object.
    *
    * Returns null if on Android platform.
    */
-  ios: SEGAnalytics;
+  static ios: SEGAnalytics;
 
   /**
    * Provides the instance of the Android SDK's Analytics object.
    *
    * Returns null if on iOS platform.
    */
-  android: com.segment.analytics.Analytics;
+  static android: com.segment.analytics.Analytics;
 
   /**
    * Sets-up the shared instance that this plugin will use.
@@ -38,7 +38,7 @@ export declare class Segment implements Common {
    * @param key write key for the Segment service
    * @param configOptions most common options to configure Segment tracking and uploading
    */
-  configure(key: string, configOptions?: SegmentConfig): void;
+  static configure(key: string, configOptions?: SegmentConfig): void;
 
   /**
    * identify lets you tie a user to their actions and record traits about them. It includes a unique
@@ -52,7 +52,7 @@ export declare class Segment implements Common {
    * @param customTraits any traits that are not standard in Segment
    * @param options
    */
-  identify(id: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions): void;
+  static identify(id: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions): void;
 
   /**
    * *track* lets you record the actions your users perform. Every action triggers what we call an “event”,
@@ -65,7 +65,7 @@ export declare class Segment implements Common {
    * @param properties
    * @param options
    */
-  track(event: string, properties?: any, options?: SegmentOptions): void;
+  static track(event: string, properties?: any, options?: SegmentOptions): void;
 
   /**
    * The *screen* method lets you you record whenever a user sees a screen of your mobile app,
@@ -79,7 +79,7 @@ export declare class Segment implements Common {
    * @param properties
    * @param options
    */
-  screen(name: string, category?: string, properties?: any, options?: SegmentOptions): void;
+  static screen(name: string, category?: string, properties?: any, options?: SegmentOptions): void;
 
   /**
    * *group* lets you associate an identified user user with a group. A group could be a company,
@@ -94,7 +94,7 @@ export declare class Segment implements Common {
    * @param customTraits any traits that are not standard in Segment
    * @param options
    */
-  group(groupId: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions): void;
+  static group(groupId: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions): void;
 
   /**
    * *alias* is how you associate one identity with another. This is an advanced method, but it is required
@@ -107,11 +107,11 @@ export declare class Segment implements Common {
    * @param newId
    * @param options
    */
-  alias(newId: string, options?: SegmentOptions): void;
+  static alias(newId: string, options?: SegmentOptions): void;
 
   /**
    * Disables all analytics, remains set throughout app restarts.
    * @param optOut
    */
-  optOut(optOut: boolean): void;
+  static optOut(optOut: boolean): void;
 }

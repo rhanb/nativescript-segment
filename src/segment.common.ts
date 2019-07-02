@@ -1,13 +1,3 @@
-export abstract class Common {
-  static configure(key: string, configOptions?: SegmentConfig): void {};
-  static identify(id: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions): void{};
-  static track(event: string, properties?: any, options?: SegmentOptions): void{};
-  static screen(name: string, category?: string, properties?: any, options?: SegmentOptions): void{};
-  static group(groupId: string, traits?: SegmentTraits, customTraits?: any, options?: SegmentOptions): void{};
-  static alias(newId: string, options?: SegmentOptions): void{};
-  static optOut(optOut: boolean): void{};
-}
-
 export interface SegmentConfig {
   /**
    * Defaults to true

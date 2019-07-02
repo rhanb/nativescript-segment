@@ -1,4 +1,4 @@
-import { Common, SegmentConfig, SegmentTraits, SegmentOptions } from './segment.common';
+import { SegmentConfig, SegmentTraits, SegmentOptions } from './segment.common';
 import * as app from 'tns-core-modules/application';
 
 const Analytics = com.segment.analytics.Analytics;
@@ -6,7 +6,7 @@ const Traits = com.segment.analytics.Traits;
 const Properties = com.segment.analytics.Properties;
 const Options = com.segment.analytics.Options;
 
-export class Segment extends Common {
+export class Segment {
 
   public static init = false;
   public static logging = false;
